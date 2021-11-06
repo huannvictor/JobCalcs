@@ -30,9 +30,19 @@ const jobs = [
 ]
 
 // req, res
-routes.get('/', (req, res) =>
-  res.render(basePath + 'index', { jobs })
-)
+routes.get('/', (req, res) => {
+  const updatedJobs = Jobs.map(job => {
+    // ajustes no jobs
+    // cálculo do tempo restante
+    const remainingDays = (job['total-hours'] / job['daily-hours']).toFixed()
+    const createdDate = new Date(job.created_at)
+    const dueDay = createdDate.getDate() + Number(remainingDays)
+
+    return job
+  })
+
+  return res.render(basePath + 'index', { jobs })
+})
 routes.get('/job', (req, res) => res.render(basePath + 'job'))
 routes.post('/job', (req, res) => {
   // req,body { name: 'HUANN', 'daily-hours': '2', 'total-hours': '2' }
