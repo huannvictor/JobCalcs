@@ -31,7 +31,11 @@
     <%- include('parts/page-header', {title: 'Editar Job'}) %> 
 
     <div class="container flex animate-up delay-2">
-        <form id="form-job" method="post" action="/job/<%=job.id%>">
+        <form 
+          id="form-job" 
+          method="post" 
+          action="/job/<%=job.id%>"
+        >
 
           <fieldset>
             <legend>Dados do Job</legend>
@@ -87,7 +91,7 @@
           <a 
             href="#" 
             class="button gray open-modal"
-            >
+          >
             <img 
               src="/images/trash-24.svg" 
               alt="Cancelar cadastro" 
@@ -105,7 +109,7 @@
         <h3>Excluir Job</h3>
         <p>Quer mesmo excluir esse job? <br/>
         Ele será apagado para sempre.  
-        </p>p>
+        </p>
         <footer>
           <a 
             class="button gray" 
@@ -114,12 +118,15 @@
             class="button red"
             type="submit"
             form="delete-job">Excluir Job</button>
-        </footer>
-      </div>
+        </footer>      
+      </p>
+    </div>
       <form 
         method="post" 
-        action="/job/delete/{JOBID}" 
-        id="delete-job"></form>
+        action="/job/delete/<%= job.id %>" 
+        id="delete-job"
+      >
+      </form>
     </div>
     <!-- end modal-wrapper -->
   </body>
