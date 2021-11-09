@@ -58,7 +58,7 @@ const initDb = {
       total_hours,
       created_at
     )VALUES(
-      "OneTwo Project,
+      "OneTwo Project",
       3,
       43,
       1617514376018
