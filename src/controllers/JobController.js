@@ -1,6 +1,6 @@
-const Job = require("../model/Job")
+const Job = require('../model/Job')
 const JobUtils = require('../utils/JobUtils')
-const Profile = require("../model/Profile")
+const Profile = require('../model/Profile')
 
 module.exports = {
   create(req, res) {
@@ -11,7 +11,7 @@ module.exports = {
     // req,body { name: 'HUANN', 'daily-hours': '2', 'total-hours': '2' }
     const lastId = jobs[jobs.length - 1]?.id || 0
 
-    jobs.push({
+    Job.create({
       id: lastId + 1,
       name: req.body.name,
       'daily-hours': req.body['daily-hours'],
