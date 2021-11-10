@@ -5,7 +5,7 @@ const JobUtils = require('../utils/JobUtils')
 module.exports = {
   async index(req, res) {
     // criando variáveis para importar os dados que estão no model, via .get()
-    const jobs = Job.get()
+    const jobs = await Job.get()
     const profile = await Profile.get()
 
     const statusCount = {
@@ -17,16 +17,16 @@ module.exports = {
     // total de horas por dia de cada job em PROGRESS
     let jobTotalHours = 0
 
-    const updatedJobs = jobs.map((job) => {
+    const updatedJobs = jobs.map(job => {
       // ajustes no jobs
-      const remaining = JobUtils.remainingDays(job);
-      const status = remaining <= 0 ? 'done' : 'progress';
+      const remaining = JobUtils.remainingDays(job)
+      const status = remaining <= 0 ? 'done' : 'progress'
 
       // a const status é passada como referência, dento dos [] -> se é done || progress
       // informa dendo dos [] a referência (done || progress)
       // o cógigo fica como se fosse status.done += 1 || status.progress += 1
       // obs.: quando coloca dentro de [] uma referência, é passado como se fosse uma propriedade do objeto (object.value)
-      statusCount[status] += 1;
+      statusCount[status] += 1
 
       // total de horas por dia de cada job em PROGRESS
       jobTotalHours =
