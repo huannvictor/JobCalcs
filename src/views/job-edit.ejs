@@ -31,6 +31,7 @@
     <%- include('parts/page-header', {title: 'Editar Job'}) %> 
 
     <div class="container flex animate-up delay-2">
+""
         <form 
           id="form-job" 
           method="post" 
@@ -104,7 +105,7 @@
     <!-- end container -->
 
     <div class="modal-wrapper">
-      <p class="modal">
+      <div class="modal">
         <img src="/images/trash-48.svg" alt="Excluir Job" title="Excluir Job" />
         <h3>Excluir Job</h3>
         <p>Quer mesmo excluir esse job? <br/>
@@ -119,14 +120,12 @@
             type="submit"
             form="delete-job">Excluir Job</button>
         </footer>      
-      </p>
+      </div>
     </div>
       <form 
         method="post" 
         action="/job/delete/<%= job.id %>" 
-        id="delete-job"
-      >
-      </form>
+        id="delete-job"></form>
     </div>
     <!-- end modal-wrapper -->
   </body>
